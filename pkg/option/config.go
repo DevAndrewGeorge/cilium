@@ -775,6 +775,12 @@ const (
 	// PolicyAuditModeArg argument enables policy audit mode.
 	PolicyAuditModeArg = "policy-audit-mode"
 
+	// EnableHubble enables hubble in the agent.
+	EnableHubble = "enable-hubble"
+
+	// HubbleSocketPath specifies the UNIX domain socket for Hubble server to listen to.
+	HubbleSocketPath = "hubble-socket-path"
+
 	// HubbleListenAddresses specifies addresses for Hubble server to listen to.
 	HubbleListenAddresses = "hubble-listen-addresses"
 
@@ -1587,6 +1593,12 @@ type DaemonConfig struct {
 	// Policy related decisions can be checked via the poicy verdict messages.
 	PolicyAuditMode bool
 
+	// EnableHubble specifies whether to enable the hubble server.
+	EnableHubble bool
+
+	// HubbleSocketPath specifies the UNIX domain socket for Hubble server to listen to.
+	HubbleSocketPath string
+
 	// HubbleListenAddresses specifies addresses for Hubble to listen to.
 	HubbleListenAddresses []string
 
@@ -2287,6 +2299,8 @@ func (c *DaemonConfig) Populate() {
 	}
 
 	// Hubble options.
+	c.EnableHubble = viper.GetBool(EnableHubble)
+	c.HubbleSocketPath = viper.GetString(HubbleSocketPath)
 	c.HubbleListenAddresses = viper.GetStringSlice(HubbleListenAddresses)
 	c.HubbleFlowBufferSize = viper.GetInt(HubbleFlowBufferSize)
 	c.HubbleEventQueueSize = viper.GetInt(HubbleEventQueueSize)
