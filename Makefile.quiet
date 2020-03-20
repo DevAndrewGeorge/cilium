@@ -10,7 +10,6 @@ ifeq ($(V),0)
 	ECHO_CHECK=echo "  CHECK $(RELATIVE_DIR)"
 	ECHO_GINKGO=echo "  GINKG $(RELATIVE_DIR)"
 	ECHO_CLEAN=echo "  CLEAN $(RELATIVE_DIR)"
-	SPHINXOPTS+="-q"
 else
 	# The whitespace at below EOLs is required for verbose case!
 	ECHO_CC=: 
@@ -20,4 +19,3 @@ else
 	ECHO_GINKGO=: 
 	ECHO_CLEAN=: 
 endif
-
